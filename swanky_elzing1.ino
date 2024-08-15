@@ -33,6 +33,8 @@ void setup()
   
   analogWrite(contrast, 100);
   lcd.begin(16, 2);
+    	
+
   
 }
 
@@ -69,12 +71,14 @@ lcd.print("Hours: " + String(buttonpressed1));
       int time = buttonpressed1 * 60 + buttonpressed2;
       while (i < time) {
         Serial.println("Time Remaining: " + String(time) + " minutes");
-        time = time - 1;
         lcd.clear();
         lcd.setCursor(0, 0);
         lcd.print("Time Remaining: ");
         lcd.setCursor(0, 1);
-        lcd.print(String(buttonpressed1) + "h " + String(buttonpressed2) + "m");
+        //lcd.print(String(buttonpressed1) + "h " + String(buttonpressed2) + "m");
+        lcd.print(String(time) + " minutes");        
+        time = time - 1;
+
         delay(60000);
       	buttonpressed2 = buttonpressed2 - 1;
         if (buttonpressed2 = 0 && buttonpressed1 != 0) {
